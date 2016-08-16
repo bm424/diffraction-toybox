@@ -50,13 +50,13 @@ class Points:
 
         """
 
-        if auto_zero:
-            self.append_point((0., 0.))
         if points is not None:
             starting_points = check_points(points)
             self.starting_points = np.array(starting_points)
         else:
             self.starting_points = None
+        if auto_zero:
+            self.append_point((0., 0.))
         self.symmetry = symmetry
 
     def append_point(self, point):
@@ -96,16 +96,16 @@ class Points:
     def intensities(self, intensities):
         self.starting_points[:, 2] = intensities
 
-    def to_shape(self, shape, scale=0.8):
+    def to_shape(self, shape, scale=1.0):
         """Scales and translates the points into a bounding box of size `shape`.
 
         Parameters
         ----------
         shape : tuple
             The shape of the bounding box.
-        scale : float
+        scale : float, optional
             All the new points will fit within a factor of `scale` from the
-            centre to the edge of the bounding box.
+            centre to the edge of the bounding box. Defaults to 1.0.
 
         Returns
         -------
@@ -117,7 +117,7 @@ class Points:
         offset = np.array(shape)/2
         scale_factor = scale * offset
         distance = np.nanmax(np.sqrt(np.sum(np.square(self.positions), axis=1)))
-        return (self.positions/distance) * scale_factor * np.sqrt(2) + offset
+        return (self.positions/distance) * scale_factor + offset
 
     def __repr__(self):
         return "Array\n-----\nSymmetry: {}\n{}".format(self.symmetry,
@@ -139,7 +139,7 @@ class Pattern(np.ndarray):
     """
 
     @classmethod
-    def from_points(cls, points, shape=(100, 100), scale=0.8, blur=1.):
+    def from_points(cls, points, shape=(100, 100), scale=1.0, blur=1.):
         """Creates a pattern from a set of points.
 
         Currently only Gaussian peaks are implemented.

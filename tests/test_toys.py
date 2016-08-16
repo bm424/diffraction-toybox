@@ -8,7 +8,6 @@ class TestPoints(unittest.TestCase):
     def setUp(self):
         self.points = np.array([
             (1., 0.,),
-            (1., 1.,),
         ])
         self.pattern = Points(self.points)
 
@@ -36,8 +35,7 @@ class TestPoints(unittest.TestCase):
     def test_to_square(self):
         expected = np.array([
             [50, 50],
-            [90, 50],
-            [90, 90]
+            [100, 50],
         ])
         result = self.pattern.to_shape((100, 100))
         np.testing.assert_array_almost_equal(result, expected)
@@ -45,8 +43,7 @@ class TestPoints(unittest.TestCase):
     def test_to_rectangle(self):
         expected = np.array([
             [100, 50],
-            [180, 50],
-            [180, 90]
+            [200, 50],
         ])
         result = self.pattern.to_shape((200, 100))
         np.testing.assert_array_almost_equal(result, expected)
