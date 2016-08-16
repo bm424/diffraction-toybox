@@ -15,7 +15,6 @@ class TestCheckPoint(TestCase):
         point = (2, 3, 1.)
         check_point(point)
 
-
     def test_check_3d_point(self):
         point = (0., 1., 0., 1.)
         with self.assertRaises(ValueError):
@@ -25,6 +24,13 @@ class TestCheckPoint(TestCase):
         point = (0., 'bad value')
         with self.assertRaises(ValueError):
             check_point(point)
+
+
+class TestCheckPoints(TestCase):
+
+    def test_single_point(self):
+        point = ((2, 3, None),)
+        check_points(point)
 
 
 class TestSortPoints(TestCase):

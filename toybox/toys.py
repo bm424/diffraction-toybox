@@ -1,4 +1,4 @@
-from collections import UserList
+import collections
 
 import numpy as np
 from scipy.stats import multivariate_normal
@@ -19,13 +19,13 @@ class Points:
     Attributes
     ----------
     starting_points : ndarray
-        (n_points, 2)
+        (n_points, 3)
         The basis points, which are used to construct the remaining points
         through symmetry.
     symmetry : str, int
         The symmetry of the pattern. `1` indicates no symmetry.
     points : ndarray
-        (n_points, 2)
+        (n_points, 3)
         The points of the pattern with symmetry relations applied. Setting
         `points` will overwrite `starting_points`:
 
@@ -36,15 +36,28 @@ class Points:
                  symmetry=1,
                  auto_zero=True,
                  ):
+        """
+
+        Parameters
+        ----------
+        points : array_like
+            (n_points, 3)
+            Initial points, in the format (x, y, intensity)
+        symmetry : int, str
+            Symmetry to apply to the points.
+        auto_zero : bool
+            If True, automatically appends (0., 0., None) to the points.
+
+        """
+
+        if auto_zero:
+            self.append_point((0., 0.))
         if points is not None:
             starting_points = check_points(points)
             self.starting_points = np.array(starting_points)
         else:
             self.starting_points = None
         self.symmetry = symmetry
-
-        if auto_zero:
-            self.append_point((0., 0.))
 
     def append_point(self, point):
         """Adds a point to the pattern.
@@ -57,7 +70,7 @@ class Points:
         """
         point = check_point(point)
         if self.starting_points is None:
-            self.starting_points = point
+            self.starting_points = np.array(point).reshape(1, -1)
         else:
             self.starting_points = np.vstack((self.starting_points, point))
         return self
@@ -103,7 +116,8 @@ class Points:
         """
         offset = np.array(shape)/2
         scale_factor = scale * offset
-        return self.positions * scale_factor + offset
+        distance = np.nanmax(np.sqrt(np.sum(np.square(self.positions), axis=1)))
+        return (self.positions/distance) * scale_factor * np.sqrt(2) + offset
 
     def __repr__(self):
         return "Array\n-----\nSymmetry: {}\n{}".format(self.symmetry,
@@ -163,6 +177,52 @@ class Pattern(np.ndarray):
         plt.imshow(self, interpolation='none', cmap=cmap)
         if colorbar:
             plt.colorbar()
+
+
+class BiCrystal(collections.MutableSequence):
+
+    def __init__(self, pattern1, pattern2, profile=np.linspace(0, 1, 11)):
+        self.pattern_1 = pattern1
+        self.pattern_2 = pattern2
+        self._profile = profile
+
+    @property
+    def profile(self):
+        return self._profile
+
+    @profile.setter
+    def profile(self, profile):
+        if np.max(profile) > 1 or np.min(profile) < 0:
+            raise ValueError("Profile must be between 0 and 1.")
+        self._profile = profile
+
+    @property
+    def profile_i(self):
+        return 1. - self.profile
+
+    @property
+    def patterns(self):
+        return np.array([p * self.pattern_2 + q * self.pattern_1 for p, q in zip(self.profile, self.profile_i)])
+
+    def __len__(self):
+        return len(self.profile)
+
+    def __getitem__(self, item):
+        return self.patterns[item].view(Pattern)
+
+    def __setitem__(self, key, value):
+        if value > 1 or value < 0:
+            raise ValueError("Profile must be between 0 and 1.")
+        self.profile[key] = value
+
+    def __delitem__(self, key):
+        self.profile = np.delete(self.profile, key, None)
+
+    def insert(self, index, value):
+        self.profile = np.insert(self.profile, index, value)
+
+
+
 
 
 
