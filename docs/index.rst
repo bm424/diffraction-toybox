@@ -11,10 +11,6 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   toybox
-   symmetry
-
-
 
 Indices and tables
 ==================
