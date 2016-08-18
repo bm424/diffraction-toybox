@@ -7,7 +7,6 @@ setup(
     packages=[
         'tests',
         'toybox',
-        'symmetry'
     ],
     url='',
     license='MIT',
