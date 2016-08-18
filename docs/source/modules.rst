@@ -1,7 +1,7 @@
-diffraction-toybox
-==================
+toybox
+======
 
 .. toctree::
    :maxdepth: 4
 
-   diffraction-toybox
+   toybox

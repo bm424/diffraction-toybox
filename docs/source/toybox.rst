@@ -1,6 +1,13 @@
 toybox package
 ==============
 
+Subpackages
+-----------
+
+.. toctree::
+
+    toybox.symmetry
+
 Submodules
 ----------
 
