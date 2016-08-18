@@ -11,7 +11,7 @@ Contents:
 .. toctree::
    :glob:
 
-   source/*
+   source/toybox
 
 
 Indices and tables
