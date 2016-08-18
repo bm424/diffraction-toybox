@@ -20,8 +20,6 @@
 import os
 import sys
 
-from ..toybox import __version__
-
 sys.path.insert(0, os.path.abspath('..'))
 
 # -- General configuration ------------------------------------------------
@@ -72,7 +70,7 @@ author = 'Ben Martineau'
 # built documents.
 #
 # The short X.Y version.
-version = __version__
+version = "0.1"
 # The full version, including alpha/beta/rc tags.
 release = '1'
 
