@@ -1,6 +1,8 @@
 import unittest
+
 import numpy as np
-from toybox.toys import Points, Pattern, BiCrystal
+from toybox.toys.crystals import BiCrystal
+from toybox.toys.core import Points
 
 
 class TestPoints(unittest.TestCase):
