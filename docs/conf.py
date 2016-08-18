@@ -20,7 +20,7 @@
 import os
 import sys
 
-from toybox import __version__
+from ..toybox import __version__
 
 sys.path.insert(0, os.path.abspath('..'))
 
