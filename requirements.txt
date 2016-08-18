@@ -21,5 +21,4 @@ scipy==0.18.0
 six==1.10.0
 snowballstemmer==1.2.1
 Sphinx==1.4.5
-sphinx-rtd-theme==0.1.9
 toolz==0.8.0
