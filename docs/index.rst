@@ -9,6 +9,8 @@ Welcome to diffraction-toybox's documentation!
 Contents:
 
 .. toctree::
+   :glob:
+
    source/*
 
 
