@@ -1,4 +1,4 @@
-from . import __version__
+from toybox import __version__
 from distutils.core import setup
 
 setup(

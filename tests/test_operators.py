@@ -1,12 +1,10 @@
 import unittest
-from math import sqrt, sin, cos, radians, pi
-
+from math import sqrt, sin, cos, pi
 from unittest import TestCase
 
-from random import random
 import numpy as np
-
-from symmetry.operators import BaseOperator, Rotation, Reflection, propagate
+from random import random
+from toybox.symmetry import BaseOperator, Rotation, Reflection, propagate
 from toybox.tools import equivalent
 
 ROOT2 = sqrt(2)

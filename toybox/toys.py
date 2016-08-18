@@ -1,12 +1,10 @@
 import collections
-
+import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import multivariate_normal
-import matplotlib.pyplot as plt
 from skimage import filters
-
-from symmetry.operators import propagate
-from symmetry.parsers import parse_hermann_mauguin
+from toybox.symmetry import parse_hermann_mauguin
+from toybox.symmetry import propagate
 from toybox.tools import check_point, check_points, equivalent
 
 
