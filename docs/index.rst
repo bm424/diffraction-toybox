@@ -8,10 +8,8 @@ Welcome to diffraction-toybox's documentation!
 
 Contents:
 
-.. toctree::
-   :maxdepth: 2
-
-   toybox
+.. autosummary::
+   :toctree: source/
 
 
 Indices and tables
