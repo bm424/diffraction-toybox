@@ -1,8 +1,9 @@
+from . import __version__
 from distutils.core import setup
 
 setup(
     name='diffraction-toybox',
-    version='0.1',
+    version=__version__,
     packages=[
         'tests',
         'toybox',

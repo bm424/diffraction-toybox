@@ -19,6 +19,9 @@
 #
 import os
 import sys
+
+from .. import __version__
+
 sys.path.insert(0, os.path.abspath('..'))
 
 # -- General configuration ------------------------------------------------
@@ -69,7 +72,7 @@ author = 'Ben Martineau'
 # built documents.
 #
 # The short X.Y version.
-version = '0.1'
+version = __version__
 # The full version, including alpha/beta/rc tags.
 release = '1'
 
