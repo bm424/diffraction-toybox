@@ -184,7 +184,7 @@ class BiCrystal(collections.MutableSequence):
     def __init__(self, pattern1, pattern2, profile=np.linspace(0, 1, 11)):
         self.pattern_1 = pattern1
         self.pattern_2 = pattern2
-        self._profile = profile
+        self.profile = profile
 
     @property
     def profile(self):
