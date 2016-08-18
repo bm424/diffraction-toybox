@@ -8,8 +8,8 @@ Welcome to diffraction-toybox's documentation!
 
 Contents:
 
-.. autosummary::
-   :toctree: source/
+.. toctree::
+   source/*
 
 
 Indices and tables
