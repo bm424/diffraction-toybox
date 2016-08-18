@@ -4,7 +4,7 @@ from unittest import TestCase
 
 import numpy as np
 from random import random
-from toybox.symmetry import BaseOperator, Rotation, Reflection, propagate
+from toybox.symmetry.operators import BaseOperator, Rotation, Reflection, propagate
 from toybox.tools import equivalent
 
 ROOT2 = sqrt(2)

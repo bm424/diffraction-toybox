@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from toybox.symmetry import Rotation, Reflection
-from toybox.symmetry import parse_hermann_mauguin
+from toybox.symmetry.operators import Rotation, Reflection
+from toybox.symmetry.parsers import parse_hermann_mauguin
 
 
 class TestParseHermannMauguin(TestCase):

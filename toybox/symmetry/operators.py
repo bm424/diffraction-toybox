@@ -2,7 +2,7 @@ from math import degrees
 
 import numpy as np
 from copy import copy
-from toybox.symmetry import get_rotation_matrix, get_reflection_matrix
+from toybox.symmetry.matrices import get_rotation_matrix, get_reflection_matrix
 from toybox.tools import equivalent, sort_points, clean_points
 
 IDENTITY = np.array([

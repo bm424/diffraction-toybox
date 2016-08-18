@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import multivariate_normal
 from skimage import filters
-from toybox.symmetry import parse_hermann_mauguin
-from toybox.symmetry import propagate
+from toybox.symmetry.parsers import parse_hermann_mauguin
+from toybox.symmetry.operators import propagate
 from toybox.tools import check_point, check_points, equivalent
 
 

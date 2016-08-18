@@ -1,6 +1,6 @@
 import re
 
-from toybox.symmetry import Rotation, Reflection
+from toybox.symmetry.operators import Rotation, Reflection
 
 
 def parse_hermann_mauguin(symmetry):

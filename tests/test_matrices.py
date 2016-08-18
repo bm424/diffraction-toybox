@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 import numpy as np
-from toybox.symmetry import rotation_matrix, reflection_matrix, \
+from toybox.symmetry.matrices import rotation_matrix, reflection_matrix, \
     get_rotation_matrix, get_reflection_matrix
 
 
